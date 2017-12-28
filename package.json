@@ -24,9 +24,13 @@
     "babel-polyfill": "^6.26.0",
     "express": "^4.16.2",
     "next": "^4.2.1",
+    "next-i18n-helper": "^1.0.19",
     "next-routes": "^1.2.0",
+    "next.js-redux-helper": "^1.0.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-i18next": "^7.3.0",
+    "react-redux": "^5.0.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

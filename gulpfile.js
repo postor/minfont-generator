@@ -5,7 +5,8 @@ const eslint = require('gulp-eslint')
 gulp.task('build-server', () =>
   gulp.src('server/**/*.js')
     .pipe(babel({
-      presets: ['env']
+      presets: ['env'],
+      babelrc: false
     }))
     .pipe(gulp.dest('server-dist'))
 );

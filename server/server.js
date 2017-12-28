@@ -11,6 +11,7 @@ const handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
   const server = express()
+  server.use('/', express.static('static'))
   server.use(handler)
   server.listen(port, (err) => {
     if (err) throw err
