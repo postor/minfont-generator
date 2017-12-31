@@ -4,6 +4,9 @@ import { join, extname } from 'path'
 import upload from 'express-fileupload'
 import { Router } from 'express'
 import shortid from 'shortid'
+import { mkdir } from 'fs-extra'
+
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$&')
 
 const router = Router()
 
@@ -14,10 +17,13 @@ router.post('/', (req, res) => {
   }
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   const file = req.files.file;
-  const filePath = join(tmpdir(), shortid() + extname(file.name))
+  const dirPath = join(tmpdir(), shortid())
+  const filePath = join(dirPath, 'font' + extname(file.name))
 
-  // Use the mv() method to place the file somewhere on your server
-  file.mv(filePath).then(() => {
+  mkdir(dirPath).then(() => {
+    // Use the mv() method to place the file somewhere on your server
+    return file.mv(filePath)
+  }).then(() => {
     res.json({ filePath });
   }).catch((error) => {
     res.json({ error });

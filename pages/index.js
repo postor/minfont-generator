@@ -16,20 +16,22 @@ class Index extends Component {
       filePath: '',
       words: '',
       fontFamily: '',
+      distUrl: '',
+      distPath: '',
     }
   }
 
   render() {
-    const { uploading, uploaded, words, fontFamily } = this.props
-
-    return (<article>
-      {!uploading && !uploaded && (<DragZone onDrop={(files) => this.handleDrop(files)} >
-        <p>Drop your WOFF2\WOFF\EOT\TTF here, or click to select.</p>
-      </DragZone>)}
-
-      {uploading && (<p>uploading...</p>)}
-
-      {uploaded && (<div>
+    const { distUrl, distPath, uploading, uploaded, words, fontFamily } = this.state
+    if (distUrl) {
+      return (<p>
+        web font files generated at
+        <a href={distUrl} target="_blank">{distPath}</a>
+      </p>)
+    } else if (uploading) {
+      return (<p>uploading...</p>)
+    } else if (uploaded) {
+      return (<div>
         <input
           placeholder="font name"
           value={fontFamily}
@@ -49,10 +51,14 @@ class Index extends Component {
           }}
         />
         <button onClick={() => this.handleText()}>next</button>
-      </div>)}
-
-    </article>)
+      </div>)
+    } else {
+      return (<DragZone onDrop={(files) => this.handleDrop(files)} >
+        <p>Drop your font file(.ttf) here, or click to select.</p>
+      </DragZone>)
+    }
   }
+
 
   handleDrop(files) {
     const req = request.post('/api/upload');
@@ -76,8 +82,11 @@ class Index extends Component {
       filePath,
       fontFamily,
     }).end((err, res) => {
-      const { url } = JSON.parse(res.text)
-      console.log(url)
+      const { distUrl,distPath } = JSON.parse(res.text)
+      this.setState({
+        distPath,
+        distUrl,
+      })
     });
   }
 }

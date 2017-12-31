@@ -5,11 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>样式使用说明</title>
+  <link href="<%- fontUrl %>/font.css" rel="stylesheet">
+  <style>
+    .words {
+      font-family: "<%- fontFamily %>" "Microsoft Yahei";
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
-
+  <div class="words">
+    <%- words %>
+  </div>
 </body>
 
 </html>

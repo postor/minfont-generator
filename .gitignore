@@ -1,3 +1,5 @@
 /node_modules
 /server-dist
 /.next
+/static/generated/*
+!/static/generated/index.html

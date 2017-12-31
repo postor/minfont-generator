@@ -17,7 +17,7 @@ app.prepare().then(() => {
   server.use(cookieParser())
   server.use('/', express.static('static'))
   server.use('/api/upload', upload)
-  server.use('/api/wrods', words)
+  server.use('/api/words', words)
   server.use(handler)
   server.listen(port, (err) => {
     if (err) throw err

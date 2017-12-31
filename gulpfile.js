@@ -2,7 +2,15 @@ const gulp = require('gulp')
 const babel = require('gulp-babel')
 const eslint = require('gulp-eslint')
 
-gulp.task('build-server', () =>
+gulp.task('build-server-copy', () => {
+  gulp.src([
+    'server/**/*.html',
+    'server/**/*.ttf',
+  ])
+    .pipe(gulp.dest('server-dist'))
+})
+
+gulp.task('build-server', ['build-server-copy'], () =>
   gulp.src('server/**/*.js')
     .pipe(babel({
       presets: ['env'],

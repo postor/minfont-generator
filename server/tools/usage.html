@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>how to use generated font</title>
+  <link href="<%- fontUrl %>/font.css" rel="stylesheet">
+  <style>
+    body {
+      font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    }
+    .words {
+      font-family: "<%- fontFamily %>";
+    }
+    .compare {
+      font-size: 36px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="compare">
+    default: <%- words %>
+  </div>
+  <div class="compare words">
+      <%- fontFamily %>: <%- words %>
+  </div>
+  <hr>
+  <div>
+    <pre>
+      &lt;link href=&quot;<%- fontUrl %>/font.css&quot; rel=&quot;stylesheet&quot;&gt;
+      &lt;style&gt;
+        .words {
+          font-family: &quot;<%- fontFamily %>&quot;;
+        }
+      &lt;/style&gt;
+    </pre>
+  </div>
+</body>
+
+</html>
