@@ -17,6 +17,7 @@ const Header = ({ t }) => (<header>
     |
     <ChangeLanguage />
   </nav>
+  <hr />
 </header>)
 
 export default translate(['common'])(Header)
