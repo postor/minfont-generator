@@ -1,9 +1,13 @@
 # minfont-generator
 
+generate a css of min font for only used words | 生成只包含你使用文本的最小的字体css
+
+quick glance: https://www.youtube.com/watch?v=eF9gicjUIOw&list=PLM1v95K5B1ntVsYvNJIxgRPppngrO_X4s
+
 ## setup | 安装
 
 ```
-git clone && cd
+git clone https://github.com/postor/minfont-generator.git && cd minfont-generator
 yarn
 yarn dev
 ```
